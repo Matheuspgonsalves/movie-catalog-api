@@ -1,11 +1,11 @@
 package br.com.moviecatalog.movie_catalog_api.main;
 
+import br.com.moviecatalog.movie_catalog_api.service.ApiReader;
 import br.com.moviecatalog.movie_catalog_api.utils.InputReader;
 
-import java.util.Scanner;
-
 public class Menu {
-    private Scanner read = new Scanner(System.in);
+    final private String URL = "https://www.omdbapi.com/?t=";
+    final private String API_KEY = "&apikey=5839cfbd";
 
     public void optionMenu() {
         System.out.println("*****************************************************");
@@ -28,8 +28,13 @@ public class Menu {
         int option = readOption();
 
         while (!(option <= 0 || option >= 4)) {
+            ApiReader apiReader = new ApiReader();
             switch (option) {
                 case 1:
+                    System.out.println("Digite o nome do filme: ");
+                    String movieName = InputReader.readLine();
+                    String jsonResponse = apiReader.getDataApi(URL + movieName.replace(" ", "+") + API_KEY);
+
                     System.out.println("Consulta filme...");
                     break;
                 case 2:
@@ -40,8 +45,7 @@ public class Menu {
                 default:
                     System.out.println("Opção inválida. Por favor digite uma opção válida do menu abaixo");
                     optionMenu();
-                    option = read.nextInt();
-                    read.nextLine();
+                    option = readOption();
             }
         }
     }
