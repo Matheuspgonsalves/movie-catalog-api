@@ -7,7 +7,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public record MovieData(
         @JsonAlias("Title") String title,
         @JsonAlias("Year") String year,
-        @JsonAlias("imdbRating") String rating,
+        @JsonAlias("imdbRating") double rating,
         @JsonAlias("Released") String released
 ) {
+
+    @Override
+    public String toString() {
+        return "MovieData\n\n" +
+                "title = " + title + '\n' +
+                "year = " + year + '\n' +
+                "rating = " + rating + '\n' +
+                "released = " + released + '\n';
+    }
 }
