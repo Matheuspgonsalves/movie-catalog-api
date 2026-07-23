@@ -93,7 +93,6 @@ public class Menu {
                                 .forEach(e -> System.out.println(e.episodes()));
                     } while (seasonFlag);
 
-
                     option = newSearch();
                     flag = option != 3;
                     break;
