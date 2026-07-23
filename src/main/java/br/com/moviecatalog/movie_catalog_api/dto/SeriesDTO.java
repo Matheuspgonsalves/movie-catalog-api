@@ -4,19 +4,16 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record MovieData(
+public record SeriesDTO(
         @JsonAlias("Title") String title,
-        @JsonAlias("Year") String year,
-        @JsonAlias("imdbRating") double rating,
-        @JsonAlias("Released") String released
+        @JsonAlias("totalSeasons") Integer totalSeasons,
+        @JsonAlias("imdbRating") String rating
 ) {
-
     @Override
     public String toString() {
-        return "MovieData\n\n" +
+        return "SeriesData\n\n" +
                 "title = " + title + '\n' +
-                "year = " + year + '\n' +
-                "rating = " + rating + '\n' +
-                "released = " + released + '\n';
+                "totalSeasons = " + totalSeasons + '\n' +
+                "imdbRating = " + rating + '\n';
     }
 }
